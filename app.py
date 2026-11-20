@@ -1,5 +1,6 @@
 
 import streamlit as st
+st.title("HELLO EARTH TEST 🌍")
 from timeline import calculate_cosmic_day
 from galaxy3d import create_galaxy
 from planet_view import create_planet_scene
@@ -1282,45 +1283,7 @@ if selected_name != st.session_state.previous_event:
             .p-uranus { width: 20px; height: 20px; background: #70c6d2; }
             .p-neptune { width: 20px; height: 20px; background: #2859cf; }
 
-           .p-saturn::after {
-    content: "";
-    position: absolute;
-    width: 58px;
-    height: 20px;
-    left: 50%;
-    top: 50%;
-
-    border-radius: 50%;
-
-    background: repeating-linear-gradient(
-        90deg,
-        #8b7048 0px,
-        #d8c092 3px,
-        #f4e3bd 5px,
-        #a88b5e 7px,
-        #6e5739 9px,
-        transparent 10px,
-        transparent 12px
-    );
-
-    -webkit-mask: radial-gradient(
-        ellipse,
-        transparent 0 35%,
-        #000 38% 65%,
-        transparent 68%
-    );
-
-    mask: radial-gradient(
-        ellipse,
-        transparent 0 35%,
-        #000 38% 65%,
-        transparent 68%
-    );
-
-    transform: translate(-50%, -50%) rotate(-20deg);
-
-    box-shadow: 0 0 5px rgba(220, 190, 130, 0.5);
-}
+           
            @keyframes ssPlanetOrbit {
     from {
         offset-distance: 0%;
@@ -1376,7 +1339,826 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.write("")
+if selected_event["name"] == "Earth Forms":
 
+    st.write(
+        "Around 4.54 billion years ago, "
+        "rocky material collided and gradually formed Earth."
+    )
+
+    components.html(
+        """
+        <html>
+        <head>
+        <style>
+        body {
+            margin: 0;
+            background: #050817;
+            font-family: Arial;
+        }
+
+        .scene {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background: radial-gradient(ellipse, #28101b, #050817 75%);
+        }
+
+        .stars {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(#9dbaff 1px, transparent 1px);
+            background-size: 65px 65px, 100px 100px;
+            animation: stars 15s linear infinite;
+        }
+
+        .earth {
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 35% 30%, #ffd27a, transparent 25%),
+                radial-gradient(circle at 65% 70%, #a91f0b, transparent 40%),
+                radial-gradient(circle, #ff9b25, #d83a0b 60%, #240b15);
+            box-shadow: 0 0 45px #ff5b1a, 0 0 100px #d83a0b;
+            animation: pulse 3s ease-in-out infinite alternate;
+        }
+
+        .meteor {
+            position: absolute;
+            width: 65px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, orange, white);
+            box-shadow: 0 0 12px orange;
+            animation: fall 3s linear infinite;
+        }
+
+        .m1 { top: 10%; left: 5%; }
+        .m2 { top: 25%; right: 5%; animation-delay: 1s; }
+        .m3 { top: 0; left: 65%; animation-delay: 2s; }
+
+        .caption {
+            position: absolute;
+            bottom: 22px;
+            width: 100%;
+            text-align: center;
+            color: #ffd49a;
+            font-size: 17px;
+        }
+
+        @keyframes pulse {
+            from { box-shadow: 0 0 35px #ff5b1a; }
+            to { box-shadow: 0 0 100px #ff9b25, 0 0 140px #d83a0b; }
+        }
+
+        @keyframes fall {
+            0% { transform: translate(0, 0) rotate(25deg); opacity: 0; }
+            15% { opacity: 1; }
+            100% { transform: translate(250px, 250px) rotate(25deg); opacity: 0; }
+        }
+
+        @keyframes stars {
+            to { transform: translateY(-65px); }
+        }
+        </style>
+        </head>
+
+        <body>
+        <div class="scene">
+            <div class="stars"></div>
+            <div class="earth"></div>
+            <div class="meteor m1"></div>
+            <div class="meteor m2"></div>
+            <div class="meteor m3"></div>
+            <div class="caption">
+                🌍 EARTH FORMATION • 4.54 BILLION YEARS AGO
+            </div>
+        </div>
+        </body>
+        </html>
+        """,
+        height=520,
+        scrolling=False
+    )
+
+# ---------------- LIFE ON EARTH ANIMATION ----------------
+
+
+# ---------------- 3D LIFE ON EARTH ANIMATION ----------------
+
+if selected_event["name"] == "Life on Earth":
+
+    st.write("🌊 3D Exploration: Ancient Deep Ocean")
+
+    components.html(
+        """
+        <html>
+        <head>
+            <style>
+                body {
+                    margin: 0;
+                    overflow: hidden;
+                    background: #010817;
+                }
+
+                #ocean {
+                    width: 100%;
+                    height: 540px;
+                    border-radius: 16px;
+                    overflow: hidden;
+                }
+
+                canvas {
+                    display: block;
+                }
+
+                #caption {
+                    position: absolute;
+                    bottom: 20px;
+                    width: 100%;
+                    text-align: center;
+                    color: #b5edff;
+                    font-family: Arial;
+                    font-size: 15px;
+                    letter-spacing: 2px;
+                    text-shadow: 0 0 12px #00bfff;
+                    pointer-events: none;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div id="ocean">
+                <div id="caption">
+                    ANCIENT OCEAN • ORIGINS OF LIFE
+                </div>
+            </div>
+
+            <script type="module">
+                import * as THREE from
+                'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+
+                const container = document.getElementById("ocean");
+
+                const scene = new THREE.Scene();
+                scene.background = new THREE.Color(0x010817);
+                scene.fog = new THREE.FogExp2(0x03172b, 0.035);
+
+                const camera = new THREE.PerspectiveCamera(
+                    60,
+                    container.clientWidth / container.clientHeight,
+                    0.1,
+                    100
+                );
+
+                camera.position.set(0, 5, 17);
+                camera.lookAt(0, 2, 0);
+
+                const renderer = new THREE.WebGLRenderer({
+                    antialias: true
+                });
+
+                renderer.setSize(
+                    container.clientWidth,
+                    container.clientHeight
+                );
+
+                renderer.setPixelRatio(
+                    Math.min(window.devicePixelRatio, 2)
+                );
+
+                renderer.toneMapping = THREE.ACESFilmicToneMapping;
+                renderer.toneMappingExposure = 1.2;
+
+                container.appendChild(renderer.domElement);
+
+                // LIGHTING
+
+                const ambient = new THREE.AmbientLight(
+  0x163b55, 0.8
+);
+            
+                scene.add(ambient);
+
+                const blueLight = new THREE.PointLight(
+    0x087ca8, 180, 38
+);
+                blueLight.position.set(0, 9, 3);
+                scene.add(blueLight);
+
+               const ventLight = new THREE.PointLight(
+    0x16d9d0, 110, 18
+);
+                ventLight.position.set(0, 2, 1);
+                scene.add(ventLight);
+
+// CINEMATIC UNDERWATER LIGHT RAYS
+
+const lightRays = [];
+
+const rayMaterial = new THREE.MeshBasicMaterial({
+    color: 0x55cfff,
+    transparent: true,
+    opacity: 0.09,
+    side: THREE.DoubleSide,
+    depthWrite: false
+});
+
+for (let i = 0; i < 7; i++) {
+
+    const rayGeometry = new THREE.CylinderGeometry(
+        0.12,
+        0.9,
+        11,
+        16,
+        1,
+        true
+    );
+
+    const ray = new THREE.Mesh(
+        rayGeometry,
+        rayMaterial.clone()
+    );
+
+    ray.position.set(
+        (i - 3) * 2.5,
+        3.5,
+        -3 - Math.random() * 3
+    );
+
+    ray.rotation.z = (Math.random() - 0.5) * 0.3;
+    ray.rotation.x = (Math.random() - 0.5) * 0.2;
+
+    scene.add(ray);
+    lightRays.push(ray);
+}
+
+                // OCEAN FLOOR
+
+                const floorGeometry = new THREE.PlaneGeometry(
+                    45, 45, 50, 50
+                );
+
+                const positions = floorGeometry.attributes.position;
+
+                for (let i = 0; i < positions.count; i++) {
+                    positions.setZ(
+                        i,
+                        Math.random() * 0.7
+                    );
+                }
+
+                floorGeometry.computeVertexNormals();
+
+                const floorMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x182b32,
+                    roughness: 1,
+                    metalness: 0.1
+                });
+
+                const floor = new THREE.Mesh(
+                    floorGeometry,
+                    floorMaterial
+                );
+
+                floor.rotation.x = -Math.PI / 2;
+                floor.position.y = -2;
+                scene.add(floor);
+
+                // ROCKS
+
+                const rockMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x263b43,
+                    roughness: 0.95
+                });
+
+                for (let i = 0; i < 35; i++) {
+                    const rock = new THREE.Mesh(
+                        new THREE.DodecahedronGeometry(
+                            0.5 + Math.random() * 1.2, 0
+                        ),
+                        rockMaterial
+                    );
+
+                    rock.position.set(
+                        (Math.random() - 0.5) * 28,
+                        -1.8 + Math.random() * 0.3,
+                        (Math.random() - 0.5) * 12
+                    );
+
+                    rock.scale.y = 0.5 + Math.random();
+                    rock.rotation.set(
+                        Math.random(),
+                        Math.random(),
+                        Math.random()
+                    );
+
+                    scene.add(rock);
+                }
+
+// PRIMITIVE MICROBIAL COLONIES
+
+const colonies = [];
+
+const colonyColors = [
+    0x39e6c0,
+    0x70ff9c,
+    0x39bfff
+];
+
+for (let i = 0; i < 18; i++) {
+
+    const colony = new THREE.Group();
+
+    const cellCount = 8 + Math.floor(Math.random() * 12);
+
+    const colonyColor = colonyColors[
+        Math.floor(Math.random() * colonyColors.length)
+    ];
+
+    for (let j = 0; j < cellCount; j++) {
+
+        const size = 0.06 + Math.random() * 0.09;
+
+        const cell = new THREE.Mesh(
+            new THREE.SphereGeometry(size, 10, 10),
+
+            new THREE.MeshStandardMaterial({
+                color: colonyColor,
+                emissive: colonyColor,
+                emissiveIntensity: 1.4,
+                roughness: 0.6
+            })
+        );
+
+        cell.position.set(
+            (Math.random() - 0.5) * 0.9,
+            Math.random() * 0.35,
+            (Math.random() - 0.5) * 0.9
+        );
+
+        colony.add(cell);
+    }
+
+    colony.position.set(
+        (Math.random() - 0.5) * 22,
+        -1.35,
+        (Math.random() - 0.5) * 9
+    );
+
+    scene.add(colony);
+
+    colonies.push({
+        mesh: colony,
+        phase: Math.random() * Math.PI * 2
+    });
+}
+
+                // HYDROTHERMAL VENTS
+
+                const vents = [];
+
+                for (let i = 0; i < 4; i++) {
+                    const group = new THREE.Group();
+
+                    const height = 2 + Math.random() * 1.4;
+
+                    const chimney = new THREE.Mesh(
+                        new THREE.CylinderGeometry(
+                            0.25, 0.65, height, 8
+                        ),
+                        new THREE.MeshStandardMaterial({
+                            color: 0x34464b,
+                            roughness: 0.85
+                        })
+                    );
+
+                    chimney.position.y = height / 2 - 1.8;
+                    group.add(chimney);
+
+                    const opening = new THREE.Mesh(
+                        new THREE.TorusGeometry(0.28, 0.09, 8, 16),
+                        new THREE.MeshStandardMaterial({
+                            color: 0x142b32,
+                            emissive: 0x075b62,
+                            emissiveIntensity: 1.5
+                        })
+                    );
+
+                    opening.position.y = height - 1.75;
+                    opening.rotation.x = Math.PI / 2;
+                    group.add(opening);
+
+                    group.position.set(
+                        (i - 1.5) * 3,
+                        0,
+                        -1 + Math.random() * 2
+                    );
+
+                    scene.add(group);
+                    vents.push(group);
+                }
+
+                
+// REALISTIC HYDROTHERMAL VENT SMOKE
+
+const smokeParticles = [];
+
+const smokeColors = [
+    0x182d35,
+    0x31515a,
+    0x527d82,
+    0x78a9a8
+];
+
+for (let i = 0; i < 450; i++) {
+
+    const size = 0.07 + Math.random() * 0.16;
+
+    const geometry = new THREE.SphereGeometry(
+        size, 6, 6
+    );
+
+    const material = new THREE.MeshBasicMaterial({
+        color: smokeColors[
+            Math.floor(Math.random() * smokeColors.length)
+        ],
+        transparent: true,
+        opacity: 0.12 + Math.random() * 0.2,
+        depthWrite: false
+    });
+
+    const particle = new THREE.Mesh(
+        geometry,
+        material
+    );
+
+    particle.position.set(
+        (Math.random() - 0.5) * 1.8,
+        Math.random() * 7 - 1.5,
+        (Math.random() - 0.5) * 1.8
+    );
+
+    scene.add(particle);
+
+    smokeParticles.push({
+        mesh: particle,
+        speed: 0.008 + Math.random() * 0.018,
+        drift: Math.random() * 0.01,
+        startX: particle.position.x
+    });
+}
+
+                
+// REALISTIC MICROSCOPIC ORGANISMS
+
+const organisms = [];
+
+const organismColors = [
+    0x51e5cf,
+    0x8aff9c,
+    0x49c5ff,
+    0xc58aff
+];
+
+for (let i = 0; i < 35; i++) {
+
+    const size = 0.07 + Math.random() * 0.09;
+
+    const geometry = new THREE.SphereGeometry(
+        size, 16, 16
+    );
+
+    const material = new THREE.MeshStandardMaterial({
+        color: organismColors[
+            Math.floor(Math.random() * organismColors.length)
+        ],
+        emissive: 0x087c75,
+        emissiveIntensity: 1.5,
+        roughness: 0.5
+    });
+
+    const organism = new THREE.Mesh(
+        geometry,
+        material
+    );
+
+    // Some organisms are rod-shaped
+    const isRod = Math.random() > 0.5;
+
+    if (isRod) {
+        organism.scale.set(1.8, 0.65, 0.65);
+    }
+
+    organism.position.set(
+        (Math.random() - 0.5) * 12,
+        Math.random() * 5,
+        (Math.random() - 0.5) * 6
+    );
+
+    scene.add(organism);
+
+    organisms.push({
+        mesh: organism,
+        speed: 0.2 + Math.random() * 0.5,
+        drift: Math.random() * 0.015,
+        phase: Math.random() * Math.PI * 2,
+        isRod: isRod
+    });
+}
+
+
+                // BUBBLES
+
+                const bubbles = [];
+
+                for (let i = 0; i < 45; i++) {
+                    const bubble = new THREE.Mesh(
+                        new THREE.SphereGeometry(
+                            0.035 + Math.random() * 0.05, 8, 8
+                        ),
+                        new THREE.MeshBasicMaterial({
+                            color: 0x9ceaff,
+                            transparent: true,
+                            opacity: 0.5
+                        })
+                    );
+
+                    bubble.position.set(
+                        (Math.random() - 0.5) * 18,
+                        Math.random() * 9 - 2,
+                        (Math.random() - 0.5) * 10
+                    );
+
+                    scene.add(bubble);
+                    bubbles.push(bubble);
+                }
+
+// GLOWING ORGANIC PARTICLES
+
+const organicParticles = [];
+
+const particleColors = [
+    0x48ffe0,
+    0x62baff,
+    0x9affb5,
+    0xc58aff
+];
+
+for (let i = 0; i < 100; i++) {
+
+    const size = 0.025 + Math.random() * 0.045;
+
+    const particle = new THREE.Mesh(
+        new THREE.SphereGeometry(size, 8, 8),
+
+        new THREE.MeshBasicMaterial({
+            color: particleColors[
+                Math.floor(Math.random() * particleColors.length)
+            ],
+            transparent: true,
+            opacity: 0.35 + Math.random() * 0.5
+        })
+    );
+
+    particle.position.set(
+        (Math.random() - 0.5) * 18,
+        Math.random() * 8,
+        (Math.random() - 0.5) * 10
+    );
+
+    scene.add(particle);
+
+    organicParticles.push({
+        mesh: particle,
+        speed: 0.003 + Math.random() * 0.008,
+        phase: Math.random() * Math.PI * 2
+    });
+}
+
+                // ANIMATION
+
+                const clock = new THREE.Clock();
+
+                function animate() {
+                    requestAnimationFrame(animate);
+
+                    const t = clock.getElapsedTime();
+
+// Slowly moving underwater light rays
+
+lightRays.forEach((ray, i) => {
+    ray.rotation.z =
+        Math.sin(t * 0.25 + i) * 0.12;
+
+    ray.material.opacity =
+        0.05 + Math.sin(t * 0.8 + i) * 0.025;
+});
+
+                    // Cinematic underwater camera movement
+
+const zoom = Math.sin(t * 0.18) * 1.5;
+
+camera.position.x = Math.sin(t * 0.15) * 2;
+camera.position.y = 5 + Math.sin(t * 0.2) * 0.5;
+camera.position.z = 17 - zoom;
+
+camera.lookAt(
+    Math.sin(t * 0.12) * 1.5,
+    2.5,
+    0
+);
+
+                    vents.forEach((vent, i) => {
+                        vent.rotation.y =
+                            Math.sin(t * 0.2 + i) * 0.08;
+                    });
+
+                    
+// NATURAL RISING SMOKE MOVEMENT
+
+smokeParticles.forEach((p, i) => {
+
+    p.mesh.position.y += p.speed;
+
+    p.mesh.position.x +=
+        Math.sin(t * 0.5 + i) * p.drift;
+
+    p.mesh.position.z +=
+        Math.cos(t * 0.4 + i) * 0.002;
+
+    p.mesh.scale.multiplyScalar(1.0005);
+
+    if (p.mesh.position.y > 7) {
+
+        p.mesh.position.y = -1.5;
+
+        p.mesh.position.x =
+            p.startX + (Math.random() - 0.5) * 1.5;
+
+        p.mesh.position.z =
+            (Math.random() - 0.5) * 1.8;
+
+        p.mesh.scale.setScalar(1);
+    }
+});
+
+                   
+// NATURAL MICROORGANISM SWIMMING
+
+organisms.forEach((o, i) => {
+
+    o.mesh.position.x +=
+        Math.sin(t * 0.7 + o.phase) * o.drift;
+
+    o.mesh.position.y +=
+        Math.cos(t * o.speed + o.phase) * 0.008;
+
+    o.mesh.position.z +=
+        Math.sin(t * 0.5 + o.phase) * 0.006;
+
+    // Natural rotation
+    o.mesh.rotation.x =
+        Math.sin(t * 0.4 + o.phase) * 0.3;
+
+    o.mesh.rotation.y += 0.008;
+
+    // Keep organisms inside the underwater scene
+    if (o.mesh.position.x > 7) {
+        o.mesh.position.x = -7;
+    }
+
+    if (o.mesh.position.x < -7) {
+        o.mesh.position.x = 7;
+    }
+
+    if (o.mesh.position.y > 7) {
+        o.mesh.position.y = 0;
+    }
+
+    if (o.mesh.position.y < 0) {
+        o.mesh.position.y = 7;
+    }
+});
+
+// CELL DIVISION ANIMATION
+
+organisms.forEach((o, i) => {
+
+    // Each organism divides at its own interval
+    if (o.nextDivision === undefined) {
+        o.nextDivision = 8 + Math.random() * 15;
+    }
+
+    if (t > o.nextDivision && organisms.length < 65) {
+
+        // Create a new daughter cell
+        const daughter = o.mesh.clone();
+
+        daughter.material = o.mesh.material.clone();
+
+        daughter.position.copy(o.mesh.position);
+
+        daughter.position.x += 0.15;
+
+        daughter.scale.copy(o.mesh.scale);
+
+        scene.add(daughter);
+
+        organisms.push({
+            mesh: daughter,
+            speed: 0.2 + Math.random() * 0.5,
+            drift: Math.random() * 0.015,
+            phase: Math.random() * Math.PI * 2,
+            isRod: o.isRod,
+            nextDivision: t + 15 + Math.random() * 15
+        });
+
+        // Original cell moves slightly away
+        o.mesh.position.x -= 0.15;
+
+        // Prevent immediate repeated division
+        o.nextDivision = t + 15 + Math.random() * 15;
+    }
+});
+
+                    bubbles.forEach((b) => {
+                        b.position.y += 0.025;
+
+                        if (b.position.y > 8) {
+                            b.position.y = -2;
+                        }
+                    });
+
+                    renderer.render(scene, camera);
+                }
+
+                animate();
+
+// FLOATING ORGANIC PARTICLE MOVEMENT
+
+organicParticles.forEach((p, i) => {
+
+// GENTLE MICROBIAL COLONY MOVEMENT
+
+colonies.forEach((c) => {
+
+    c.mesh.children.forEach((cell, i) => {
+
+        cell.position.y +=
+            Math.sin(t * 0.8 + c.phase + i) * 0.0008;
+
+        cell.scale.setScalar(
+            1 + Math.sin(t * 1.5 + i) * 0.06
+        );
+    });
+});
+
+    p.mesh.position.y += p.speed;
+
+    p.mesh.position.x +=
+        Math.sin(t * 0.5 + p.phase) * 0.003;
+
+    p.mesh.position.z +=
+        Math.cos(t * 0.4 + p.phase) * 0.002;
+
+    // Gentle glowing effect
+    p.mesh.material.opacity =
+        0.3 + Math.sin(t * 2 + p.phase) * 0.2;
+
+    if (p.mesh.position.y > 8) {
+        p.mesh.position.y = -1;
+    }
+});
+
+                // RESPONSIVE SIZE
+
+                window.addEventListener("resize", () => {
+                    const width = container.clientWidth;
+                    const height = container.clientHeight;
+
+                    camera.aspect = width / height;
+                    camera.updateProjectionMatrix();
+
+                    renderer.setSize(width, height);
+                });
+            </script>
+        </body>
+        </html>
+        """,
+        height=560,
+        scrolling=False
+    )
+
+
+st.write("")
 col1, col2 = st.columns(2)
 
 with col1:
@@ -1444,3 +2226,188 @@ st.plotly_chart(
     use_container_width=True,
     key="solar_system_animation"
 )
+
+
+
+
+# ---------------- EARTH FORMATION ANIMATION ----------------
+
+if selected_name == "Earth Forms":
+
+    st.markdown("---")
+    st.write("🔥 Watch how the early Earth formed")
+    st.write(
+        "Around 4.54 billion years ago, "
+        "rocky material collided and slowly formed our planet."
+    )
+
+    components.html(
+        """
+        <html>
+        <head>
+        <style>
+        body {
+            margin: 0;
+            background: #050817;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .scene {
+            height: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background:
+                radial-gradient(ellipse at center,
+                #24101b 0%, #0b1025 55%, #02040b 100%);
+        }
+
+        .stars {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(#9dbaff 1px, transparent 1px);
+            background-size: 75px 75px, 115px 115px;
+            animation: starMove 20s linear infinite;
+        }
+
+        .planet {
+            position: absolute;
+            width: 245px;
+            height: 245px;
+            left: 50%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 35% 30%,
+                    #ffd27a 0%, transparent 22%),
+                radial-gradient(ellipse at 65% 70%,
+                    #a91f0b 0%, transparent 35%),
+                radial-gradient(circle at 45% 45%,
+                    #ff9b25 0%, #d83a0b 45%,
+                    #54120c 78%, #160b16 100%);
+            box-shadow:
+                0 0 35px #ff5b1a,
+                0 0 85px #d83a0b,
+                inset -25px -15px 35px #260812;
+            animation: planetPulse 4s ease-in-out infinite;
+        }
+
+        .crust {
+            position: absolute;
+            width: 245px;
+            height: 245px;
+            left: 50%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background:
+                radial-gradient(ellipse at 25% 35%,
+                    #4c2923 0%, transparent 22%),
+                radial-gradient(ellipse at 75% 65%,
+                    #27151d 0%, transparent 28%),
+                radial-gradient(ellipse at 45% 85%,
+                    #4a2119 0%, transparent 25%);
+            animation: crustForm 8s ease-in-out infinite alternate;
+        }
+
+        .meteor {
+            position: absolute;
+            width: 65px;
+            height: 3px;
+            background: linear-gradient(90deg,
+                transparent, #ffb34d, white);
+            border-radius: 50%;
+            box-shadow: 0 0 12px #ff781c;
+            animation: meteorFall 3s linear infinite;
+        }
+
+        .m1 {
+            top: 15%;
+            left: 5%;
+        }
+
+        .m2 {
+            top: 28%;
+            right: 5%;
+            animation-delay: 1.2s;
+        }
+
+        .m3 {
+            top: 5%;
+            left: 65%;
+            animation-delay: 2s;
+        }
+
+        .impact {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border: 2px solid #ffb14b;
+            border-radius: 50%;
+            left: 58%;
+            top: 45%;
+            animation: impactPulse 2s ease-out infinite;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 22px;
+            width: 100%;
+            text-align: center;
+            color: #ffd49a;
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes planetPulse {
+            0%, 100% { box-shadow: 0 0 35px #ff5b1a, 0 0 85px #d83a0b; }
+            50% { box-shadow: 0 0 55px #ff9b25, 0 0 120px #e43b0b; }
+        }
+
+        @keyframes crustForm {
+            from { opacity: 0.1; }
+            to { opacity: 0.9; }
+        }
+
+        @keyframes meteorFall {
+            0% { transform: translate(0, 0) rotate(25deg); opacity: 0; }
+            15% { opacity: 1; }
+            100% { transform: translate(250px, 250px) rotate(25deg); opacity: 0; }
+        }
+
+        @keyframes impactPulse {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        @keyframes starMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(-75px); }
+        }
+        </style>
+        </head>
+
+        <body>
+        <div class="scene">
+            <div class="stars"></div>
+            <div class="planet"></div>
+            <div class="crust"></div>
+            <div class="meteor m1"></div>
+            <div class="meteor m2"></div>
+            <div class="meteor m3"></div>
+            <div class="impact"></div>
+            <div class="caption">
+                🌍 EARTH FORMATION • 4.54 BILLION YEARS AGO
+            </div>
+        </div>
+        </body>
+        </html>
+        """,
+        height=520,
+        scrolling=False
+    )
